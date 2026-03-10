@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04 # 24.04 is currently incompatible with Buildozer
     steps:
       - uses: actions/checkout@v4
 
@@ -56,6 +56,7 @@ jobs:
 
       - name: Build APK with Buildozer
         run: |
+          # Use 'yes' only to accept Android SDK licenses if prompted
           yes | buildozer android debug
         continue-on-error: false
 
